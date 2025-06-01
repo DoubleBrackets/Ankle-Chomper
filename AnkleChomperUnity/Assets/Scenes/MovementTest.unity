@@ -931,10 +931,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Protag
       objectReference: {fileID: 0}
-    - target: {fileID: 8104632109543401642, guid: 420fed636395dae498ab3a3f6e68c5fa, type: 3}
-      propertyPath: m_Constraints
-      value: 116
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

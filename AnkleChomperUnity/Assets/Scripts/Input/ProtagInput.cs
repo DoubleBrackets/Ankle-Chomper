@@ -14,6 +14,9 @@ namespace Input
         [SerializeField]
         public UnityEvent OnRightStridePressed;
 
+        [SerializeField]
+        public UnityEvent OnChomped;
+
         public void HandleLeftStrideInput(InputAction.CallbackContext context)
         {
             if (context.started)
@@ -27,6 +30,14 @@ namespace Input
             if (context.started)
             {
                 OnRightStridePressed?.Invoke();
+            }
+        }
+
+        public void HandleChompInput(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                OnChomped?.Invoke();
             }
         }
     }
