@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace Protag
 {
-    public class ProtagMovement : MonoBehaviour
+    public class ProtagMovingState : ProtagState
     {
         [Header("Depends")]
 
@@ -29,6 +29,9 @@ namespace Protag
         [Header("Events")]
 
         [SerializeField]
+        private UnityEvent _onStride;
+
+        [SerializeField]
         private UnityEvent<Vector3> _onLeftFootPositionChanged;
 
         [SerializeField]
@@ -36,6 +39,8 @@ namespace Protag
 
         [SerializeField]
         private UnityEvent<Vector3> _onCenterPositionChanged;
+
+        public bool MovementEnabled { get; set; }
 
         private Vector3 _leftFootPosition;
         private Vector3 _rightFootPosition;
@@ -108,7 +113,7 @@ namespace Protag
 
         public void StrideLeg(bool strideRightLeg)
         {
-            if (_bodyTransform == null)
+            if (_bodyTransform == null || !MovementEnabled)
             {
                 return;
             }
@@ -129,6 +134,8 @@ namespace Protag
                 out Vector3 newForward);
 
             ResolveNewPosition(newCenterPosition, newForward);
+
+            _onStride.Invoke();
         }
 
         public void StrideRightLeg()
@@ -168,6 +175,21 @@ namespace Protag
 
             // Rotate forward
             newForward = Quaternion.AngleAxis(strideDegrees, rotationAxis) * forward;
+        }
+
+        public override void EnterState()
+        {
+            MovementEnabled = true;
+        }
+
+        public override void OnExitState()
+        {
+            MovementEnabled = false;
+        }
+
+        public override bool CanEnterState()
+        {
+            return true;
         }
     }
 }

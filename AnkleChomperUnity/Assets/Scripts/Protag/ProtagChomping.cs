@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Legs;
 using NaughtyAttributes;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.Events;
 
 namespace Protag
 {
-    public class ProtagChomping : MonoBehaviour
+    public class ProtagChomping : ProtagState
     {
         [SerializeField]
         private LayerMask _legLayerMask;
@@ -26,6 +27,8 @@ namespace Protag
 
         [SerializeField]
         public UnityEvent OnChomped;
+
+        public bool ChompingEnabled { get; set; }
 
         [ShowNonSerializedField]
         private Leg _targetedLeg;
@@ -111,19 +114,21 @@ namespace Protag
 
         public void Chomp()
         {
-            if (_targetedLeg != null)
+            if (!ChompingEnabled || _targetedLeg == null)
             {
-                Vector3 targetPos = _targetedLeg.GetChompTargetPosition();
-                Vector3 forward = (targetPos - _rb.position).normalized;
-
-                _targetedLeg.Eaten();
-                _targetedLeg.SetTargeted(false);
-                _targetedLeg = null;
-                OnChomped?.Invoke();
-
-                targetPos.y = _rb.position.y;
-                _rb.Move(targetPos, Quaternion.LookRotation(forward, Vector3.up));
+                return;
             }
+
+            Vector3 targetPos = _targetedLeg.GetChompTargetPosition();
+            Vector3 forward = (targetPos - _rb.position).normalized;
+
+            _targetedLeg.Eaten();
+            _targetedLeg.SetTargeted(false);
+            _targetedLeg = null;
+            OnChomped?.Invoke();
+
+            targetPos.y = _rb.position.y;
+            _rb.Move(targetPos, Quaternion.LookRotation(forward, Vector3.up));
         }
 
         private Leg SweepForClosestLeg()
@@ -155,6 +160,29 @@ namespace Protag
             }
 
             return closestLeg;
+        }
+
+        public override void EnterState()
+        {
+            ChompTaskAsync().Forget();
+        }
+
+        private async UniTaskVoid ChompTaskAsync()
+        {
+            ChompingEnabled = true;
+            Chomp();
+            await UniTask.WaitForSeconds(0.5f);
+            _controller.SwitchToDefaultState();
+        }
+
+        public override void OnExitState()
+        {
+            ChompingEnabled = false;
+        }
+
+        public override bool CanEnterState()
+        {
+            return _targetedLeg != null;
         }
     }
 }
