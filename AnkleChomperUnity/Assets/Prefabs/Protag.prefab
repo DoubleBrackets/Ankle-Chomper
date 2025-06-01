@@ -5541,9 +5541,10 @@ MonoBehaviour:
   _legLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  _sweepRadius: 3
+  _sweepRadius: 3.25
   _sweepCenter: {fileID: 832845814303778465}
   _visualHeadTransform: {fileID: 2221709991232101800}
+  _rb: {fileID: 8104632109543401642}
   OnChomped:
     m_PersistentCalls:
       m_Calls:

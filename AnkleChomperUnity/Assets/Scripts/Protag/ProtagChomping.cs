@@ -70,6 +70,15 @@ namespace Protag
 
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(_sweepCenter.position, _sweepRadius);
+
+            if (_targetedLeg != null)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawLine(
+                    _visualHeadTransform.position,
+                    _targetedLeg.GetChompTargetPosition()
+                );
+            }
         }
 
         private void RotateHead()
