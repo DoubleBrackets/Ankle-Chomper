@@ -49,6 +49,11 @@ namespace Protag
 
         public void SwitchToState(ProtagState newState)
         {
+            if (!newState.CanEnterState())
+            {
+                return;
+            }
+
             if (_currentState != null)
             {
                 _currentState.OnExitState();
