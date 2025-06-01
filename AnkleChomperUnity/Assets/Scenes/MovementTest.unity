@@ -284,6 +284,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!54 &737506875 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 8104632109543401642, guid: 420fed636395dae498ab3a3f6e68c5fa, type: 3}
+  m_PrefabInstance: {fileID: 3271339122736191498}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &784683921
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,6 +892,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4830538386358759951, guid: 420fed636395dae498ab3a3f6e68c5fa, type: 3}
+      propertyPath: _rb
+      value: 
+      objectReference: {fileID: 737506875}
     - target: {fileID: 5200488410742562464, guid: 420fed636395dae498ab3a3f6e68c5fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

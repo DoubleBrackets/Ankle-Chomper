@@ -26,6 +26,9 @@ namespace Protag
         [SerializeField]
         private UnityEvent _onMove;
 
+        [SerializeField]
+        private UnityEvent _onVisualStep;
+
         private Vector3 _targetLeftLegPosition;
         private Vector3 _targetRightLegPosition;
 
@@ -58,6 +61,11 @@ namespace Protag
 
             _leftLegTransform.right = -_bodyTransform.right;
             _rightLegTransform.right = -_bodyTransform.right;
+        }
+
+        public void StepVisual()
+        {
+            _onVisualStep?.Invoke();
         }
 
         public void SetLeftLegPosition(Vector3 position)

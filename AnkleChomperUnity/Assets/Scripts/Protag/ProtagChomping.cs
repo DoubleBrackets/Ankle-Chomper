@@ -19,6 +19,9 @@ namespace Protag
         [SerializeField]
         private Transform _visualHeadTransform;
 
+        [SerializeField]
+        private Rigidbody _rb;
+
         [Header("Events")]
 
         [SerializeField]
@@ -101,10 +104,16 @@ namespace Protag
         {
             if (_targetedLeg != null)
             {
+                Vector3 targetPos = _targetedLeg.GetChompTargetPosition();
+                Vector3 forward = (targetPos - _rb.position).normalized;
+
                 _targetedLeg.Eaten();
                 _targetedLeg.SetTargeted(false);
                 _targetedLeg = null;
                 OnChomped?.Invoke();
+
+                targetPos.y = _rb.position.y;
+                _rb.Move(targetPos, Quaternion.LookRotation(forward, Vector3.up));
             }
         }
 
