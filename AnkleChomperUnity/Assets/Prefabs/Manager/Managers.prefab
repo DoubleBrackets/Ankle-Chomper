@@ -77,9 +77,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36486d448dfd45742b48230b52df6b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baudRate: 0
+  baudRate: 9600
   portName: 
+  intensityThresholds: {x: 125, y: 450}
+  signalQueueSize: 5
+  log: 0
   connectOnStart: 0
+  OnIntensityChange:
+    m_PersistentCalls:
+      m_Calls: []
+  OnButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
   OnStatusChange:
     m_PersistentCalls:
       m_Calls: []

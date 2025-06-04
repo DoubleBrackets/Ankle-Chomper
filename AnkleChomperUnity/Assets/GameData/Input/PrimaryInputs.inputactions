@@ -47,8 +47,30 @@
                 },
                 {
                     "name": "",
+                    "id": "7a379046-401f-4950-864e-f93932ecbc49",
+                    "path": "<Joystick>/stick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftFoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9b48e0a1-7b51-4262-9602-b9889fc79d4f",
                     "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightFoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2cb2592-15ed-4866-a27b-a25647f42577",
+                    "path": "<Joystick>/stick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

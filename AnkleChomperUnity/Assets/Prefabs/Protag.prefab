@@ -5202,6 +5202,7 @@ GameObject:
   - component: {fileID: 2816132248841384789}
   - component: {fileID: 8662982104895462875}
   - component: {fileID: 8143146622004604187}
+  - component: {fileID: 4257835112771416365}
   m_Layer: 7
   m_Name: Input
   m_TagString: Untagged
@@ -5399,6 +5400,33 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &4257835112771416365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6392749253157699321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b4721026fcfae45b089248868cff14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onButtonPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5984854025005272724}
+        m_TargetAssemblyTypeName: Protag.ProtagController, Assembly-CSharp
+        m_MethodName: SwitchToState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4830538386358759951}
+          m_ObjectArgumentAssemblyTypeName: Protag.ProtagState, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6503917495668795523
 GameObject:
   m_ObjectHideFlags: 0
