@@ -79,9 +79,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baudRate: 9600
   portName: 
-  intensityThresholds: {x: 125, y: 450}
+  intensityThresholds: {x: 100, y: 550}
   signalQueueSize: 5
-  log: 0
+  log: 1
   connectOnStart: 0
   OnIntensityChange:
     m_PersistentCalls:

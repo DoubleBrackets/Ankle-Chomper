@@ -434,7 +434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _legPrefab: {fileID: 9202958776740896972, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}
   _spawnParent: {fileID: 1864126475}
-  _numberOfLegs: 25
+  _numberOfLegs: 50
   _spawnRadius: 23.44
 --- !u!4 &991097633
 Transform:

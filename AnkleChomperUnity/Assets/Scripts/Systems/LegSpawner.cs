@@ -1,5 +1,6 @@
 using Legs;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Systems
 {
@@ -24,6 +25,14 @@ namespace Systems
         private void Start()
         {
             SpawnLegs();
+        }
+
+        private void Update()
+        {
+            if (UnityEngine.Input.GetKeyDown(KeyCode.P))
+            {
+                SpawnLegs();
+            }
         }
 
         private void OnDrawGizmos()
