@@ -84,6 +84,10 @@ namespace Protag
             }
 
             _prevCenterPos = _centerPosition;
+
+            Vector3 pos = _bodyRigidbody.position;
+            pos.y = 0; // Ensure the body stays on the ground
+            _bodyRigidbody.MovePosition(pos);
         }
 
         private void OnDrawGizmos()
@@ -150,6 +154,7 @@ namespace Protag
 
         private void ResolveNewPosition(Vector3 newCenterPosition, Vector3 newForward)
         {
+            newCenterPosition.y = 0;
             _bodyRigidbody.Move(
                 newCenterPosition,
                 Quaternion.LookRotation(newForward, Vector3.up));

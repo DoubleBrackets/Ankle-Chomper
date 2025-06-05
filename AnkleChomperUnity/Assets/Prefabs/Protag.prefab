@@ -76,9 +76,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bodyTransform: {fileID: 5697497728962759707}
-  _leftLegTransform: {fileID: 1324175086175486183}
-  _rightLegTransform: {fileID: 6918412827482215520}
+  _leftLegIKTarget: {fileID: 1324175086175486183}
+  _rightLegIKTarget: {fileID: 6918412827482215520}
   _lerpFactor: 0.9999
+  _footToGroundDistance: 0.85
+  _footRaiseHeight: 1
   _onMove:
     m_PersistentCalls:
       m_Calls: []
@@ -5056,7 +5058,7 @@ MonoBehaviour:
   _bodyTransform: {fileID: 8043561686036994013}
   _bodyRigidbody: {fileID: 8104632109543401642}
   _strideAngle: 75
-  _legGapFromCenter: 0.7
+  _legGapFromCenter: 0.65
   _onStride:
     m_PersistentCalls:
       m_Calls:
@@ -5627,8 +5629,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 14c34682bba790f4a9c8000bdb669759, type: 3}
-  m_Resource: {fileID: 8300000, guid: 14c34682bba790f4a9c8000bdb669759, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e7d136c8756e9dd47b52fc21108d43e2, type: 3}
+  m_Resource: {fileID: 8300000, guid: e7d136c8756e9dd47b52fc21108d43e2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

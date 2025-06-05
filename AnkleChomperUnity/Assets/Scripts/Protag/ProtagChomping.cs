@@ -129,7 +129,7 @@ namespace Protag
             Vector3 targetPos = _targetedLeg.GetChompTargetPosition();
             Vector3 forward = (targetPos - _rb.position).normalized;
 
-            targetPos.y = _rb.position.y;
+            targetPos.y = 0;
             _rb.Move(targetPos, Quaternion.LookRotation(forward, Vector3.up));
 
             ChompAsync().Forget();

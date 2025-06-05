@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Protag
 {
@@ -10,16 +11,26 @@ namespace Protag
         [SerializeField]
         private Transform _bodyTransform;
 
-        [SerializeField]
-        private Transform _leftLegTransform;
+        [Header("IK")]
 
+        [FormerlySerializedAs("_leftLegTransform")]
         [SerializeField]
-        private Transform _rightLegTransform;
+        private Transform _leftLegIKTarget;
+
+        [FormerlySerializedAs("_rightLegTransform")]
+        [SerializeField]
+        private Transform _rightLegIKTarget;
 
         [Header("Config")]
 
         [SerializeField]
         private float _lerpFactor;
+
+        [SerializeField]
+        private float _footToGroundDistance;
+
+        [SerializeField]
+        private float _footRaiseHeight;
 
         [Header("Events")]
 
@@ -69,8 +80,24 @@ namespace Protag
                 );
             }
 
-            _leftLegTransform.position = _currentLeftLegPosition;
-            _rightLegTransform.position = _currentRightLegPosition;
+            float leftLegDist = Vector3.Distance(
+                _currentLeftLegPosition,
+                _targetLeftLegPosition
+            );
+
+            Vector3 ikLeftTargetPos = _currentLeftLegPosition;
+            ikLeftTargetPos.y = Mathf.InverseLerp(0, _footToGroundDistance, leftLegDist) * _footRaiseHeight;
+
+            float rightLegDist = Vector3.Distance(
+                _currentRightLegPosition,
+                _targetRightLegPosition
+            );
+
+            Vector3 ikRightTargetPos = _currentRightLegPosition;
+            ikRightTargetPos.y = Mathf.InverseLerp(0, _footToGroundDistance, rightLegDist) * _footRaiseHeight;
+
+            _leftLegIKTarget.position = ikLeftTargetPos;
+            _rightLegIKTarget.position = ikRightTargetPos;
 
             _prevCenterPos = bodyPosition;
         }
