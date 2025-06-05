@@ -70,7 +70,7 @@
                 {
                     "name": "",
                     "id": "b2cb2592-15ed-4866-a27b-a25647f42577",
-                    "path": "<Joystick>/stick/right",
+                    "path": "<Joystick>/trigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
