@@ -40,7 +40,7 @@ namespace Legs
             OnEaten?.Invoke();
 
             // Optionally, destroy the leg after being eaten
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, 3f);
         }
 
         public void SetTargeted(bool isInRange)
