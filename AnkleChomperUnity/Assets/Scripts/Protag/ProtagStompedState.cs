@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,6 +22,12 @@ namespace Protag
         public override bool CanEnterState()
         {
             return _controller.CurrentState != this;
+        }
+
+        [Button("GetStomped")]
+        private void GetStomped()
+        {
+            _controller.SwitchToState(this);
         }
     }
 }
