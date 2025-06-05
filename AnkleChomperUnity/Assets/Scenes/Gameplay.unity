@@ -284,63 +284,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1001 &109136307
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 567724797882036032, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 567724797882036032, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 567724797882036032, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 567724797882036032, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 567724797882036032, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 567724797882036032, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 567724797882036032, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 567724797882036032, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 567724797882036032, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 567724797882036032, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8812898035912684855, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}
-      propertyPath: m_Name
-      value: LegPillar (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}
 --- !u!1 &110736552
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,8 +454,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -597,7 +540,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -219}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &520424315
@@ -649,8 +592,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37
-  m_fontSizeBase: 37
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -701,6 +644,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520424313}
   m_CullTransparentMesh: 1
+--- !u!1 &569455953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 569455955}
+  - component: {fileID: 569455954}
+  m_Layer: 0
+  m_Name: StompSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &569455954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569455953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75fc3561bdf3bd4e8219d0df59a380e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stompingLegPrefab: {fileID: 7486613641868976934, guid: 34d196176e6849e46822c9c261cf698d, type: 3}
+  _protagTransform: {fileID: 1267550972}
+  _baseDelay: 6
+  _baseTelegraphDuration: 2.25
+  _inaccuracyDistance: 3
+  _timingRandomMult: {x: 0.9, y: 1.2}
+--- !u!4 &569455955
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569455953}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &596398225
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,10 +742,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3800,7 +3793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7fe3bbbc511b84b83705a7981d30b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _legPrefab: {fileID: 9202958776740896972, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}
+  _legPrefab: {fileID: 7486613641868976934, guid: 34d196176e6849e46822c9c261cf698d, type: 3}
   _playerTransform: {fileID: 1267550972}
   _boundsRadius: 43
   _onPlayerOutOfBounds:
@@ -4033,7 +4026,19 @@ MonoBehaviour:
   gameOverDelay: 4
   OnPlayerStomped:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 569455954}
+        m_TargetAssemblyTypeName: GameplaySystem.StompSpawner, Assembly-CSharp
+        m_MethodName: set_Spawning
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnMoveToResults:
     m_PersistentCalls:
       m_Calls:
@@ -4508,6 +4513,7 @@ SceneRoots:
   - {fileID: 1881884219}
   - {fileID: 696566436}
   - {fileID: 964109512}
+  - {fileID: 569455955}
   - {fileID: 1305018085}
   - {fileID: 596398229}
   - {fileID: 2107199903}
@@ -4518,5 +4524,4 @@ SceneRoots:
   - {fileID: 970054510}
   - {fileID: 2052926173}
   - {fileID: 954925620}
-  - {fileID: 109136307}
   - {fileID: 110736556}

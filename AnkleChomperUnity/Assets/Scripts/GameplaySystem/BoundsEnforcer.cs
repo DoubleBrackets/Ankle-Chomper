@@ -7,7 +7,7 @@ namespace Systems
     public class BoundsEnforcer : MonoBehaviour
     {
         [SerializeField]
-        private Leg _legPrefab;
+        private StompingLeg _legPrefab;
 
         [SerializeField]
         private Transform _playerTransform;
@@ -36,8 +36,10 @@ namespace Systems
             {
                 _onPlayerOutOfBounds?.Invoke();
 
-                Instantiate(_legPrefab, playerPosition, Quaternion.Euler(0f, Random.Range(0, 360f), 0f), transform);
-                _legPrefab.DoStompEffects();
+                StompingLeg leg = Instantiate(_legPrefab, playerPosition,
+                    Quaternion.Euler(0f, Random.Range(0, 360f), 0f),
+                    transform);
+                leg.DoStompEffects();
 
                 stomped = true;
             }

@@ -8,8 +8,7 @@ namespace Legs
         private enum LegState
         {
             Idle,
-            Eaten,
-            Stomping
+            Eaten
         }
 
         [SerializeField]
@@ -21,8 +20,6 @@ namespace Legs
 
         public UnityEvent OnTargeted;
         public UnityEvent OnUnTargeted;
-
-        public UnityEvent OnStompEffects;
 
         private LegState state = LegState.Idle;
 
@@ -62,11 +59,6 @@ namespace Legs
             {
                 OnUnTargeted?.Invoke();
             }
-        }
-
-        public void DoStompEffects()
-        {
-            OnStompEffects?.Invoke();
         }
     }
 }
