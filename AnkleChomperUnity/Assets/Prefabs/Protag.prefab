@@ -5586,7 +5586,7 @@ MonoBehaviour:
   _legLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  _sweepRadius: 3.25
+  _sweepRadius: 3.5
   _chompDelay: 0.04
   _headIKTarget: {fileID: 151711254431990631}
   _headIKConstraint: {fileID: 5064348280961369805}

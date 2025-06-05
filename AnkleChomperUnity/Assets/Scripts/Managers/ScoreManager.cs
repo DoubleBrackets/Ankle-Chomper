@@ -35,6 +35,17 @@ namespace Systems
             HighScore = GetHighScore();
         }
 
+        private void Update()
+        {
+            if (UnityEngine.Input.GetKeyDown(KeyCode.R) && UnityEngine.Input.GetKey(KeyCode.LeftControl))
+            {
+                Debug.Log("Resetting high score");
+                PlayerPrefs.SetInt(HighScoreKey, 0);
+                PlayerPrefs.Save();
+                HighScore = 0;
+            }
+        }
+
         public void SetScore(int newScore)
         {
             if (newScore == Score)
