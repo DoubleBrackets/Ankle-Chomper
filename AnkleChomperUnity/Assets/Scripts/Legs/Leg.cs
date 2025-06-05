@@ -5,17 +5,26 @@ namespace Legs
 {
     public class Leg : MonoBehaviour
     {
+        private enum LegState
+        {
+            Idle,
+            Eaten,
+            Stomping
+        }
+
         [SerializeField]
         private Transform chompTarget;
 
         [Header("Events")]
 
-        public UnityEvent OnEaten;
+        public UnityEvent<Leg> OnEaten;
 
         public UnityEvent OnTargeted;
         public UnityEvent OnUnTargeted;
 
-        private bool eaten;
+        public UnityEvent OnStompEffects;
+
+        private LegState state = LegState.Idle;
 
         public Vector3 GetChompTargetPosition()
         {
@@ -25,19 +34,19 @@ namespace Legs
 
         public bool IsValidTarget()
         {
-            return chompTarget != null && !eaten;
+            return chompTarget != null && state == LegState.Idle;
         }
 
         public void Eaten()
         {
-            if (eaten)
+            if (state != LegState.Idle)
             {
                 return;
             }
 
-            eaten = true;
+            state = LegState.Eaten;
             // Trigger the eaten event
-            OnEaten?.Invoke();
+            OnEaten?.Invoke(this);
 
             // Optionally, destroy the leg after being eaten
             Destroy(gameObject, 3f);
@@ -53,6 +62,11 @@ namespace Legs
             {
                 OnUnTargeted?.Invoke();
             }
+        }
+
+        public void DoStompEffects()
+        {
+            OnStompEffects?.Invoke();
         }
     }
 }
