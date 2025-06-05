@@ -2,17 +2,14 @@ using Cysharp.Threading.Tasks;
 using Legs;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.Events;
 
 namespace Protag
 {
     public class ProtagChomping : ProtagState
     {
-        [SerializeField]
-        private LayerMask _legLayerMask;
-
-        [SerializeField]
-        private float _sweepRadius;
+        [Header("Depends")]
 
         [SerializeField]
         private Transform _sweepCenter;
@@ -22,6 +19,25 @@ namespace Protag
 
         [SerializeField]
         private Rigidbody _rb;
+
+        [Header("Config")]
+
+        [SerializeField]
+        private LayerMask _legLayerMask;
+
+        [SerializeField]
+        private float _sweepRadius;
+
+        [Header("Head IK")]
+
+        [SerializeField]
+        private Transform _headIKTarget;
+
+        [SerializeField]
+        private MultiAimConstraint _headIKConstraint;
+
+        [SerializeField]
+        private float _targetVerticalOffset;
 
         [Header("Events")]
 
@@ -88,27 +104,15 @@ namespace Protag
         {
             float t = 1 - Mathf.Pow(1 - 0.999f, Time.deltaTime);
 
+            _headIKConstraint.weight = Mathf.Lerp(_headIKConstraint.weight, _targetedLeg != null ? 1.0f : 0.0f, t);
+
+            Animator.SetBool("Aiming", _targetedLeg != null);
+
             // Rotate head towards the targeted leg
             if (_targetedLeg != null)
             {
-                Vector3 directionToLeg = _targetedLeg.GetChompTargetPosition() - _visualHeadTransform.position;
-                if (directionToLeg.sqrMagnitude > 0.01f)
-                {
-                    Quaternion targetRotation = Quaternion.LookRotation(directionToLeg, Vector3.up);
-                    _visualHeadTransform.rotation = Quaternion.Lerp(
-                        _visualHeadTransform.rotation,
-                        targetRotation,
-                        t
-                    );
-                }
-            }
-            else
-            {
-                _visualHeadTransform.localRotation = Quaternion.Lerp(
-                    _visualHeadTransform.localRotation,
-                    Quaternion.identity,
-                    t
-                );
+                Vector3 targetPos = _targetedLeg.GetChompTargetPosition();
+                _headIKTarget.position = targetPos + Vector3.up * _targetVerticalOffset;
             }
         }
 
@@ -164,6 +168,7 @@ namespace Protag
 
         public override void EnterState()
         {
+            Animator.Play("kid_armature|Chomping", 0, 0.0f);
             ChompTaskAsync().Forget();
         }
 

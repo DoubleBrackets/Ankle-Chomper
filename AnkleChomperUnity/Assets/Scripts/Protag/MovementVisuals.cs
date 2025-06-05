@@ -35,6 +35,8 @@ namespace Protag
         private Vector3 _currentLeftLegPosition;
         private Vector3 _currentRightLegPosition;
 
+        private Vector3 _prevCenterPos;
+
         private void Update()
         {
             float t = 1 - Mathf.Pow(1 - _lerpFactor, Time.deltaTime);
@@ -55,12 +57,16 @@ namespace Protag
 
             // Sync to transforms
             _bodyTransform.position = bodyPosition;
-            _bodyTransform.right = (_currentRightLegPosition - _currentLeftLegPosition).normalized;
+
+            if (bodyPosition != _prevCenterPos)
+            {
+                _bodyTransform.forward = (bodyPosition - _prevCenterPos).normalized;
+            }
+
             _leftLegTransform.position = _currentLeftLegPosition;
             _rightLegTransform.position = _currentRightLegPosition;
 
-            _leftLegTransform.right = -_bodyTransform.right;
-            _rightLegTransform.right = -_bodyTransform.right;
+            _prevCenterPos = bodyPosition;
         }
 
         public void StepVisual()

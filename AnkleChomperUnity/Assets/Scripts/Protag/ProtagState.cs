@@ -4,6 +4,7 @@ namespace Protag
 {
     public abstract class ProtagState : MonoBehaviour
     {
+        protected Animator Animator => _controller.Animator;
         protected ProtagController _controller;
         public abstract void EnterState();
 

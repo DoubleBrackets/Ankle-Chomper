@@ -11,6 +11,11 @@ namespace Protag
         [SerializeField]
         private List<ProtagState> _states;
 
+        [SerializeField]
+        private Animator _animator;
+
+        public Animator Animator => _animator;
+
         [ShowNonSerializedField]
         private ProtagState _currentState;
 
