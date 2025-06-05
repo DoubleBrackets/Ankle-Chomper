@@ -60,7 +60,13 @@ namespace Protag
 
             if (bodyPosition != _prevCenterPos)
             {
-                _bodyTransform.forward = (bodyPosition - _prevCenterPos).normalized;
+                Quaternion targetRotation =
+                    Quaternion.LookRotation((bodyPosition - _prevCenterPos).normalized, Vector3.up);
+                _bodyTransform.rotation = Quaternion.Lerp(
+                    _bodyTransform.rotation,
+                    targetRotation,
+                    t
+                );
             }
 
             _leftLegTransform.position = _currentLeftLegPosition;

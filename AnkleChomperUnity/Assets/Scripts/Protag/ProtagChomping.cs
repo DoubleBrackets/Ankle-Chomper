@@ -28,6 +28,9 @@ namespace Protag
         [SerializeField]
         private float _sweepRadius;
 
+        [SerializeField]
+        private float _chompDelay;
+
         [Header("Head IK")]
 
         [SerializeField]
@@ -126,13 +129,19 @@ namespace Protag
             Vector3 targetPos = _targetedLeg.GetChompTargetPosition();
             Vector3 forward = (targetPos - _rb.position).normalized;
 
+            targetPos.y = _rb.position.y;
+            _rb.Move(targetPos, Quaternion.LookRotation(forward, Vector3.up));
+
+            ChompAsync().Forget();
+        }
+
+        private async UniTaskVoid ChompAsync()
+        {
+            await UniTask.Delay((int)(_chompDelay * 1000));
             _targetedLeg.Eaten();
             _targetedLeg.SetTargeted(false);
             _targetedLeg = null;
             OnChomped?.Invoke();
-
-            targetPos.y = _rb.position.y;
-            _rb.Move(targetPos, Quaternion.LookRotation(forward, Vector3.up));
         }
 
         private Leg SweepForClosestLeg()

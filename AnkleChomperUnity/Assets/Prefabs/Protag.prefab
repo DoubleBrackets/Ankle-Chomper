@@ -5528,9 +5528,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _sweepRadius: 3.25
+  _chompDelay: 0.04
   _headIKTarget: {fileID: 151711254431990631}
   _headIKConstraint: {fileID: 5064348280961369805}
-  _targetVerticalOffset: 2
+  _targetVerticalOffset: 1
   OnChomped:
     m_PersistentCalls:
       m_Calls:
@@ -6036,6 +6037,14 @@ PrefabInstance:
     - target: {fileID: 5939265255422201170, guid: 66b613fc8668df04b86b91a5a647950d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -1.7645009
+      objectReference: {fileID: 0}
+    - target: {fileID: 6279665268046853205, guid: 66b613fc8668df04b86b91a5a647950d, type: 3}
+      propertyPath: m_Data.m_UpAxis
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6279665268046853205, guid: 66b613fc8668df04b86b91a5a647950d, type: 3}
+      propertyPath: m_Data.m_AimAxis
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6592869930218416852, guid: 66b613fc8668df04b86b91a5a647950d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
