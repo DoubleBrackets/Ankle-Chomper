@@ -1,5 +1,6 @@
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.Events;
 
 namespace Protag
@@ -7,11 +8,15 @@ namespace Protag
     public class ProtagStompedState : ProtagState
     {
         [SerializeField]
+        private Rig _ikRig;
+
+        [SerializeField]
         private UnityEvent _onStomped;
 
         public override void EnterState()
         {
             Animator.Play("kid_armature|Stunned", 0, 0f);
+            _ikRig.weight = 0f;
             _onStomped?.Invoke();
         }
 
