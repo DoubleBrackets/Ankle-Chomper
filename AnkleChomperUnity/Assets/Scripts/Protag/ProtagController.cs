@@ -16,6 +16,8 @@ namespace Protag
 
         public Animator Animator => _animator;
 
+        public ProtagState CurrentState => _currentState;
+
         [ShowNonSerializedField]
         private ProtagState _currentState;
 

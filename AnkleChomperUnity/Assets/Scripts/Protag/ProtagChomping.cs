@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Legs;
 using NaughtyAttributes;
+using Systems;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.Events;
@@ -131,6 +132,8 @@ namespace Protag
 
             targetPos.y = 0;
             _rb.Move(targetPos, Quaternion.LookRotation(forward, Vector3.up));
+
+            ScoreManager.Instance.IncrementScore();
 
             ChompAsync().Forget();
         }
