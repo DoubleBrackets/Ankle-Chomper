@@ -135,15 +135,19 @@ namespace Protag
 
             ScoreManager.Instance.IncrementScore();
 
-            ChompAsync().Forget();
+            ChompAsync(_targetedLeg).Forget();
         }
 
-        private async UniTaskVoid ChompAsync()
+        private async UniTaskVoid ChompAsync(Leg targetLeg)
         {
             await UniTask.Delay((int)(_chompDelay * 1000));
-            _targetedLeg.Eaten();
-            _targetedLeg.SetTargeted(false);
-            _targetedLeg = null;
+            if (targetLeg == null)
+            {
+                return;
+            }
+
+            targetLeg.Eaten();
+            targetLeg.SetTargeted(false);
             OnChomped?.Invoke();
         }
 

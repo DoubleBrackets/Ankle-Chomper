@@ -23,6 +23,13 @@ namespace Legs
 
         private LegState state = LegState.Idle;
 
+        private bool canBeTargeted = true;
+
+        public void SetCanBeTargeted(bool canBeEaten)
+        {
+            canBeTargeted = canBeEaten;
+        }
+
         public Vector3 GetChompTargetPosition()
         {
             // Return the position of the leg for chomping
@@ -31,7 +38,7 @@ namespace Legs
 
         public bool IsValidTarget()
         {
-            return chompTarget != null && state == LegState.Idle;
+            return chompTarget != null && state == LegState.Idle && canBeTargeted;
         }
 
         public void Eaten()

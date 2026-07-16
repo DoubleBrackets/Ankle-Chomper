@@ -16,6 +16,9 @@ namespace Legs
         [SerializeField]
         private Transform _footBody;
 
+        [SerializeField]
+        private Leg _leg;
+
         [Header("Config")]
 
         [SerializeField]
@@ -32,6 +35,9 @@ namespace Legs
 
         [SerializeField]
         private float _liftDuration;
+
+        [SerializeField]
+        private float _chompWindowDuration;
 
         [Header("Events")]
 
@@ -59,6 +65,7 @@ namespace Legs
         public void DoStomp(float telegraphDuration)
         {
             Debug.Log("STOMP", gameObject);
+            _leg.SetCanBeTargeted(false);
             DoStompAsync(telegraphDuration, gameObject.GetCancellationTokenOnDestroy()).Forget();
         }
 
@@ -75,6 +82,8 @@ namespace Legs
             DoStompCheck();
             DoStompEffects();
 
+            _leg.SetCanBeTargeted(true);
+
             await UniTask.Delay((int)(_holdDuration * 1000));
 
             token.ThrowIfCancellationRequested();
@@ -90,6 +99,11 @@ namespace Legs
                 await UniTask.Yield();
 
                 token.ThrowIfCancellationRequested();
+
+                if (elapsedTime >= _chompWindowDuration)
+                {
+                    _leg.SetCanBeTargeted(false);
+                }
             }
 
             // Destroy
