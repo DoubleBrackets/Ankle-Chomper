@@ -35,6 +35,8 @@ namespace Input
 
         public UnityEvent<float> OnIntensityChange;
 
+        public Vector2 IntensityThresholds => intensityThresholds;
+
         /// <summary>
         ///     Button press using the intensity thresholds as conditions (passed upper threshold after staying below lower
         ///     threshold).
@@ -147,6 +149,16 @@ namespace Input
         public void SetSerialPort(string newPortName)
         {
             portName = newPortName;
+        }
+
+        public void SetLowerSignalBound(int value)
+        {
+            intensityThresholds.x = Mathf.Min(value, intensityThresholds.y);
+        }
+
+        public void SetUpperSignalBound(int value)
+        {
+            intensityThresholds.y = Mathf.Max(value, intensityThresholds.x);
         }
     }
 }
