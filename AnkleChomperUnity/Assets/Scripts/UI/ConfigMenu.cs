@@ -50,6 +50,7 @@ namespace UI
             _lowerBoundInputField.onEndEdit.RemoveListener(UpdateLowerBound);
             _upperBoundInputField.onEndEdit.RemoveListener(UpdateUpperBound);
             ArduinoInput.Instance.OnIntensityChange.RemoveListener(HandleIntensityChanged);
+            InputService.Instance.RemoveInputBlocker(this);
         }
 
         private void Start()
@@ -87,6 +88,15 @@ namespace UI
             _canvasGroup.blocksRaycasts = _visible;
             _canvasGroup.interactable = _visible;
             _canvasGroup.alpha = _visible ? 1 : 0;
+
+            if (_visible)
+            {
+                InputService.Instance.AddInputBlocker(this);
+            }
+            else
+            {
+                InputService.Instance.RemoveInputBlocker(this);
+            }
         }
 
         private void HandleIntensityChanged(float signal)

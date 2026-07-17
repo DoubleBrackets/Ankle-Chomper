@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "PrimaryInputs",
     "maps": [
         {
@@ -33,7 +34,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ResetHS",
+                    "name": "ResetGame",
                     "type": "Button",
                     "id": "844df313-80c6-4569-8b72-917ce296c50e",
                     "expectedControlType": "",
@@ -101,11 +102,11 @@
                 {
                     "name": "",
                     "id": "9c2679e8-a01d-4d4a-a822-d091f314cbb9",
-                    "path": "",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ResetHS",
+                    "action": "ResetGame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

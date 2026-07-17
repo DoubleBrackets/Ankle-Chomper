@@ -5523,6 +5523,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3458912821963717296, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8812898035912684855, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}
       propertyPath: m_Name
       value: LegPillar
@@ -5531,6 +5535,10 @@ PrefabInstance:
       propertyPath: OnEaten.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 2727711496653032033}
+    - target: {fileID: 9202958776740896972, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}
+      propertyPath: OnEaten.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3439096344699283916, guid: 2998b76eb6d6c904da3d40f2189d07ec, type: 3}

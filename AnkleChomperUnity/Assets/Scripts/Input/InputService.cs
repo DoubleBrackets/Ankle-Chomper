@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -13,7 +14,10 @@ namespace Input
         public UnityEvent OnRightStridePressed;
 
         public UnityEvent OnChomped;
+        public UnityEvent OnDebugEscape;
         public static InputService Instance { get; private set; }
+
+        private HashSet<object> _inputBlockers = new();
 
         private void Awake()
         {
@@ -29,6 +33,11 @@ namespace Input
 
         public void TriggerLeftStridePressed(InputAction.CallbackContext context)
         {
+            if (_inputBlockers.Count > 0)
+            {
+                return;
+            }
+
             if (context.started)
             {
                 OnLeftStridePressed?.Invoke();
@@ -37,23 +46,56 @@ namespace Input
 
         public void TriggerRightStridePressed(InputAction.CallbackContext context)
         {
+            if (_inputBlockers.Count > 0)
+            {
+                return;
+            }
+
             if (context.started)
             {
                 OnRightStridePressed?.Invoke();
             }
         }
 
+        public void DebugEscapePressed(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                OnDebugEscape?.Invoke();
+            }
+        }
+
         public void TriggerChomped()
         {
+            if (_inputBlockers.Count > 0)
+            {
+                return;
+            }
+
             OnChomped?.Invoke();
         }
 
         public void TriggerChomped(InputAction.CallbackContext context)
         {
+            if (_inputBlockers.Count > 0)
+            {
+                return;
+            }
+
             if (context.started)
             {
                 OnChomped?.Invoke();
             }
+        }
+
+        public void AddInputBlocker(object key)
+        {
+            _inputBlockers.Add(key);
+        }
+
+        public void RemoveInputBlocker(object key)
+        {
+            _inputBlockers.Remove(key);
         }
     }
 }

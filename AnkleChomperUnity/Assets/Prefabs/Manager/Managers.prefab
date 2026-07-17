@@ -136,6 +136,9 @@ MonoBehaviour:
   OnChomped:
     m_PersistentCalls:
       m_Calls: []
+  OnDebugEscape:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7654965354411324666
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,6 +355,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6901657506940004254}
+        m_TargetAssemblyTypeName: Input.InputService, Assembly-CSharp
+        m_MethodName: DebugEscapePressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 844df313-80c6-4569-8b72-917ce296c50e
+    m_ActionName: Player/ResetHS
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

@@ -16,11 +16,15 @@ namespace Input
         [SerializeField]
         public UnityEvent OnChomped;
 
+        [SerializeField]
+        public UnityEvent OnDebugEscape;
+
         private void Start()
         {
             InputService.Instance.OnChomped.AddListener(HandleChompInput);
             InputService.Instance.OnLeftStridePressed.AddListener(HandleLeftStrideInput);
             InputService.Instance.OnRightStridePressed.AddListener(HandleRightStrideInput);
+            InputService.Instance.OnDebugEscape.AddListener(HandleDebugEscape);
         }
 
         private void OnDestroy()
@@ -28,6 +32,7 @@ namespace Input
             InputService.Instance.OnChomped.RemoveListener(HandleChompInput);
             InputService.Instance.OnLeftStridePressed.RemoveListener(HandleLeftStrideInput);
             InputService.Instance.OnRightStridePressed.RemoveListener(HandleRightStrideInput);
+            InputService.Instance.OnDebugEscape.RemoveListener(HandleDebugEscape);
         }
 
         public void HandleLeftStrideInput()
@@ -43,6 +48,11 @@ namespace Input
         public void HandleChompInput()
         {
             OnChomped?.Invoke();
+        }
+
+        public void HandleDebugEscape()
+        {
+            OnDebugEscape?.Invoke();
         }
     }
 }
